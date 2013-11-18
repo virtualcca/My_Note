@@ -1,0 +1,8 @@
+FAQ:
+1 Why homepage Loading seems a bit slow?
+Answer: Because the home page load a little bit complicated, so the load time is first loaded into the interface and then load the content, and therefore cause looks like a little "card"
+
+2 style of recording only a bunch of digital as the file name, good ugly ah can improve it?
+Answer: further Styles improvements in the tangled, temporarily recording date as the file name
+
+There are more questions, please contact myluobin@gmail.com

@@ -1,0 +1,93 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="My_Note.ToolBox.RecordVoice"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded_1"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel 包含应用程序的名称和页标题-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28" >
+            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings},Path=LocalizedResources.RecordPageTitle}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - 在此处放置其他内容-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel Orientation="Vertical">
+                <ListBox Height="460" Name="VoiceListBox">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem Tag="{Binding FileName}" Click="ListContextMenuItem_Click" Foreground="{Binding Source={StaticResource PhoneForegroundBrush}}" Header="删除"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                <HyperlinkButton Content="{Binding Path=FileName}" FontSize="30" Click="PlayVoiceButton_Click" Margin="0,5,0,5" Tag="{Binding Path=FileName}">
+                                    <HyperlinkButton.Resources>
+                                        <Style x:Key="RecordListBoxHyperlineButton" TargetType="HyperlinkButton">
+                                            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="HyperlinkButton">
+                                                        <Border Background="Transparent">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Normal"/>
+                                                                    <VisualState x:Name="MouseOver"/>
+                                                                    <VisualState x:Name="Pressed">
+                                                                        <Storyboard>
+                                                                            <DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="TextElement"/>
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="Disabled">
+                                                                        <Storyboard>
+                                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="TextElement">
+                                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                                            </ObjectAnimationUsingKeyFrames>
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border Background="{TemplateBinding Background}" Margin="{StaticResource PhoneHorizontalMargin}" Padding="{TemplateBinding Padding}">
+                                                                <TextBlock x:Name="TextElement" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{TemplateBinding Content}" TextDecorations="None" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                            </Border>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </HyperlinkButton.Resources>
+                                    <HyperlinkButton.Style>
+                                        <StaticResource ResourceKey="RecordListBoxHyperlineButton"/>
+                                    </HyperlinkButton.Style>
+                                </HyperlinkButton>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Name="RecordButton" Height="120" Width="240" VerticalContentAlignment="Center" Content="Record" Margin="0,20,0,0"
+                        Click="RecordButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

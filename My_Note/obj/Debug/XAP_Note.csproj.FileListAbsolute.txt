@@ -1,0 +1,15 @@
+E:\Other\Project\XAP_Note\XAP_Note\Bin\Debug\ApplicationIcon.png
+E:\Other\Project\XAP_Note\XAP_Note\Bin\Debug\Background.png
+E:\Other\Project\XAP_Note\XAP_Note\Bin\Debug\AppManifest.xaml
+E:\Other\Project\XAP_Note\XAP_Note\Bin\Debug\XAP_Note.xap
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\XAP_Note.csprojResolveAssemblyReference.cache
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\App.g.cs
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\Add.g.cs
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\MainPage.g.cs
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\ViewEdit.g.cs
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\XapCacheFile.xml
+E:\Other\Project\XAP_Note\XAP_Note\Bin\Debug\My_Note.dll
+E:\Other\Project\XAP_Note\XAP_Note\Bin\Debug\My_Note.pdb
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\My_Note.g.resources
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\My_Note.dll
+E:\Other\Project\XAP_Note\XAP_Note\obj\Debug\My_Note.pdb

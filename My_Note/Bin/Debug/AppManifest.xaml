@@ -1,0 +1,9 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="My_Note" EntryPointType="My_Note.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="My_Note" Source="My_Note.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
+    <AssemblyPart x:Name="microsoft.phone.controls.toolkit" Source="microsoft.phone.controls.toolkit.dll" />
+    <AssemblyPart Source="zh-TW/My_Note.resources.dll" />
+    <AssemblyPart Source="zh-CN/My_Note.resources.dll" />
+  </Deployment.Parts>
+</Deployment>

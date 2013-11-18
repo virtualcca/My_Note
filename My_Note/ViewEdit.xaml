@@ -1,0 +1,76 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="My_Note.ViewEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded_1">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel 包含应用程序的名称和页标题-->
+        <Grid Grid.Row="0" Margin="12,17,0,28" DataContext="{StaticResource LocalizedStrings}">
+            <TextBlock Name="TitleTextBlock" Margin="12,-7,12,0" FontSize="56" Height="78"/>
+            <TextBox MaxLength="10" Name="TitleTextBox" Margin="12,-7,12,0" Visibility="Collapsed"  FontSize="32" Height="78" VerticalContentAlignment="Top"
+                     LostFocus="TitleTextBox_LostFocus_1"/>
+        </Grid>
+
+        <!--ContentPanel - 在此处放置其他内容-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+            <TextBlock Name="DisplayTextBlock" VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="{Binding Path=PhoneTextSize,Source={StaticResource Setting}}"
+                       Visibility="Visible" TextWrapping="Wrap" FontFamily="{Binding Path=PhoneTextFontFamily,Source={StaticResource Setting}}" Height="420"/>
+
+            <TextBox Name="DisplayTextBox" VerticalAlignment="Top" HorizontalAlignment="Stretch" FontSize="{Binding Path=PhoneTextSize,Source={StaticResource Setting}}"
+                     Visibility="Collapsed" TextWrapping="Wrap"  FontFamily="{Binding Path=PhoneTextFontFamily,Source={StaticResource Setting}}"
+                     AcceptsReturn="True" Height="420" LostFocus="DisplayTextBox_LostFocus_1"/>
+
+            <Image Name="ShowImage" HorizontalAlignment="Left" Height="150" Margin="250,425,0,0" VerticalAlignment="Top" Width="150" MouseLeftButtonUp="ShowImage_Click" />
+
+            <Canvas Name="DeleteDialog" Background="Red" HorizontalAlignment="Left" Visibility="Collapsed"
+                    VerticalAlignment="Top" Margin="50,100" Height="280" Width="350">
+                <TextBlock TextWrapping="Wrap" Text="Do you want to delete this note?" FontSize="24"
+                           VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,5,0"/>
+                <Button Name="CancelDeleteButton" Width="150" Height="75" Content="Cancel" Canvas.Left="10" Canvas.Top="170"
+                        Click="CancelDeleteButton_Click_1"/>
+                <Button Name="DeleteButton" Width="150" Height="75" Content="Delete" Canvas.Left="190" Canvas.Top="170"
+                        Click="DeleteButton_Click_1"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
